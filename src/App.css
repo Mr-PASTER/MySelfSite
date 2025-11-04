@@ -1,0 +1,311 @@
+.app {
+  width: 100%;
+  min-height: 100vh;
+  background: #0a0a0f;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(0, 150, 255, 0.1) 0%, transparent 50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.app::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(90deg, transparent 0%, rgba(0, 255, 255, 0.03) 50%, transparent 100%),
+    linear-gradient(0deg, transparent 0%, rgba(255, 0, 255, 0.03) 50%, transparent 100%);
+  background-size: 200% 200%;
+  animation: gradient-shift 15s ease infinite;
+  pointer-events: none;
+}
+
+.container {
+  max-width: 600px;
+  width: 100%;
+  background: rgba(15, 15, 25, 0.8);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 80px rgba(0, 255, 255, 0.1);
+  overflow: hidden;
+  animation: fadeIn 0.6s ease-in;
+  position: relative;
+  z-index: 1;
+}
+
+.container.game-container {
+  max-width: 1200px;
+  overflow-x: auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header {
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(255, 0, 255, 0.1) 100%);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+  color: #e0e0e0;
+  padding: 50px 30px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  padding: 0 30px;
+  background: rgba(10, 10, 20, 0.5);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.tab {
+  padding: 15px 25px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #888;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  font-family: 'Inter', 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+}
+
+.tab:hover {
+  color: #00ffff;
+  background: rgba(0, 255, 255, 0.05);
+}
+
+.tab.active {
+  color: #00ffff;
+  border-bottom-color: #00ffff;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+  animation: gradient-shift 8s linear infinite;
+}
+
+.avatar {
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.avatar-circle {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  background: rgba(0, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  border: 3px solid rgba(0, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 0 30px rgba(0, 255, 255, 0.5),
+    inset 0 0 30px rgba(0, 255, 255, 0.1);
+  animation: pulse-glow 3s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+.name {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-shadow: 
+    0 0 10px rgba(0, 255, 255, 0.8),
+    0 0 20px rgba(0, 255, 255, 0.5),
+    0 0 30px rgba(0, 255, 255, 0.3);
+  color: #00ffff;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+}
+
+.tagline {
+  font-size: 18px;
+  opacity: 0.9;
+  font-weight: 300;
+  color: #b0b0ff;
+  text-shadow: 0 0 10px rgba(176, 176, 255, 0.5);
+  position: relative;
+  z-index: 1;
+}
+
+.main {
+  padding: 40px 30px;
+  background: rgba(10, 10, 20, 0.5);
+}
+
+.about {
+  margin-bottom: 40px;
+}
+
+.about h2,
+.contacts h2 {
+  font-size: 24px;
+  color: #00ffff;
+  margin-bottom: 15px;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  letter-spacing: 0.5px;
+}
+
+.about p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #c0c0c0;
+  text-shadow: 0 0 5px rgba(192, 192, 192, 0.3);
+}
+
+.contacts {
+  background: rgba(0, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  box-shadow: 
+    inset 0 0 20px rgba(0, 255, 255, 0.1),
+    0 0 30px rgba(0, 255, 255, 0.1);
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  background: rgba(0, 255, 255, 0.05);
+  border-radius: 12px;
+  text-decoration: none;
+  color: #e0e0e0;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.contact-item:hover {
+  transform: translateY(-2px);
+  background: rgba(0, 255, 255, 0.1);
+  border-color: rgba(0, 255, 255, 0.6);
+  box-shadow: 
+    0 5px 20px rgba(0, 255, 255, 0.3),
+    0 0 30px rgba(0, 255, 255, 0.2),
+    inset 0 0 20px rgba(0, 255, 255, 0.1);
+}
+
+.contact-icon {
+  font-size: 24px;
+  width: 40px;
+  text-align: center;
+  filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.8));
+}
+
+.contact-label {
+  font-weight: 600;
+  color: #00ffff;
+  min-width: 100px;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+}
+
+.contact-value {
+  font-size: 16px;
+  color: #e0e0e0;
+  flex: 1;
+}
+
+.footer {
+  padding: 20px 30px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.3);
+  color: #888;
+  font-size: 14px;
+  border-top: 1px solid rgba(0, 255, 255, 0.2);
+  text-shadow: 0 0 5px rgba(136, 136, 136, 0.5);
+}
+
+@media (max-width: 480px) {
+  .container {
+    border-radius: 0;
+    margin: 0;
+  }
+
+  .header {
+    padding: 30px 20px;
+  }
+
+  .name {
+    font-size: 26px;
+  }
+
+  .tagline {
+    font-size: 16px;
+  }
+
+  .main {
+    padding: 30px 20px;
+  }
+
+  .contacts {
+    padding: 20px;
+  }
+
+  .contact-item {
+    flex-wrap: wrap;
+    padding: 12px 15px;
+  }
+
+  .contact-label {
+    min-width: auto;
+  }
+}

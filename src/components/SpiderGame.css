@@ -1,0 +1,228 @@
+.spider-game {
+  padding: 20px;
+  color: #e0e0e0;
+  min-height: 400px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.game-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.game-header h2 {
+  font-size: 24px;
+  color: #00ffff;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  margin: 0;
+}
+
+.new-game-btn {
+  padding: 10px 20px;
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid rgba(0, 255, 255, 0.5);
+  border-radius: 8px;
+  color: #00ffff;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.new-game-btn:hover {
+  background: rgba(0, 255, 255, 0.2);
+  border-color: rgba(0, 255, 255, 0.8);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.hint-btn {
+  padding: 10px 20px;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.5);
+  border-radius: 8px;
+  color: #ffd700;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.hint-btn:hover {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: rgba(255, 215, 0, 0.8);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.hint-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.game-won {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 255, 0, 0.1);
+  border: 2px solid rgba(0, 255, 0, 0.5);
+  border-radius: 12px;
+  margin-bottom: 20px;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.game-won h3 {
+  color: #00ff00;
+  margin: 0;
+  text-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+}
+
+.foundations {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: rgba(0, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.foundation {
+  text-align: center;
+}
+
+.foundation-suit {
+  font-size: 32px;
+  margin-bottom: 5px;
+  filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.5));
+}
+
+.foundation-count {
+  font-size: 14px;
+  color: #00ffff;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+}
+
+.game-board {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+  min-height: 400px;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 60px;
+}
+
+.card {
+  width: 60px;
+  height: 84px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+  font-size: 20px;
+  position: relative;
+  user-select: none;
+}
+
+.card.face-down {
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.2));
+  border-color: rgba(0, 255, 255, 0.5);
+}
+
+.card.face-up {
+  background: rgba(255, 255, 255, 0.95);
+  color: #000;
+}
+
+.card.face-up:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 255, 255, 0.4);
+  border-color: rgba(0, 255, 255, 0.8);
+}
+
+.card.selected {
+  border: 2px solid #00ffff;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+  transform: translateY(-5px);
+}
+
+.card .red {
+  color: #ff0000;
+}
+
+.card .black {
+  color: #000;
+}
+
+.game-instructions {
+  background: rgba(0, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.game-instructions p {
+  margin: 5px 0;
+  color: #c0c0c0;
+}
+
+@media (max-width: 768px) {
+  .game-board {
+    gap: 5px;
+  }
+  
+  .card {
+    width: 50px;
+    height: 70px;
+    font-size: 16px;
+  }
+  
+  .column {
+    min-width: 50px;
+  }
+  
+  .game-header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .game-controls {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hint-btn,
+  .new-game-btn {
+    width: 100%;
+  }
+}
+
