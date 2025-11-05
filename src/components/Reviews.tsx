@@ -39,7 +39,7 @@ const renderStars = (rating: number): string => {
 }
 
 function Reviews() {
-    const [currentIndex, setCurrentIndex] = useState(0)
+    const [, setCurrentIndex] = useState(0)
     const scrollContainerRef = useRef<HTMLDivElement>(null)
 
     const scrollToReview = useCallback((index: number) => {
